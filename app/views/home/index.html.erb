@@ -1,7 +1,5 @@
-<h1>Bike Rack</h1>
-<p>Post your dream build here.</p>
-<% if rider_signed_in? %>
-<%= link_to 'Edit Profile', edit_rider_registration_path %> | <%= link_to 'Logout', destroy_rider_session_path, method: :delete %>
-<% else %>
-<%= link_to 'Login', new_rider_session_path %> | <%= link_to 'Sign Up', new_rider_registration_path %>
-<% end %>
+<div class="jumbotron">
+  <h1>Bke Rack</h1>
+  <p>Park your dream ride here.</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn More.</a></p>
+</div>
