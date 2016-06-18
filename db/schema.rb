@@ -11,13 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617030659) do
+ActiveRecord::Schema.define(version: 20160617215639) do
 
   create_table "pins", force: :cascade do |t|
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "rider_id"
+    t.string   "pin_image_file_name"
+    t.string   "pin_image_content_type"
+    t.integer  "pin_image_file_size"
+    t.datetime "pin_image_updated_at"
   end
 
   create_table "riders", force: :cascade do |t|
