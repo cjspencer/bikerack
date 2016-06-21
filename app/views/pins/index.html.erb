@@ -6,6 +6,7 @@
           <%= image_tag pin.pin_image.url(:medium), class: 'img-responsive' %>
           </div>
           <div class="panel-footer">
+            <p><strong><%= pin.rider.ridername %></strong> </p>
             <p><%= pin.description %></p>
             <% if pin.rider == current_rider %>
             <div>
