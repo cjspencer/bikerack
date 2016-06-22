@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  
   resources :pins
   devise_for :riders
+
+get ':ridername' => 'riders#show', as: 'rider'
+
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
