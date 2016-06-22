@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :pins
   devise_for :riders
+
+  resources :pins do
+    # resources :comments
+    member do
+      post '/repost' => 'pins#repost'
+    end
+  end
 
 get ':ridername' => 'riders#show', as: 'rider'
 

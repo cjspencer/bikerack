@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  before_action :set_pin, only: [:show, :edit, :update, :destroy, :repost]
   before_action :authenticate_rider!, except: [:index, :show]
   before_action :correct_rider, only: [:edit, :update, :destroy]
   # GET /pins
@@ -60,6 +60,11 @@ class PinsController < ApplicationController
       format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def repost
+    @pin.repost(current_rider)
+    redirect_to pins_path
   end
 
   private
