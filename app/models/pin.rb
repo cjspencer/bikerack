@@ -12,4 +12,13 @@ class Pin < ActiveRecord::Base
     repost_pin.pin_image = self.pin_image
     repost_pin.save
   end
+
+  def is_repost?
+    original_pin_id.present?
+  end
+
+  def original_pin
+    Pin.find(original_pin_id) if is_repost?
+  end
+
 end
