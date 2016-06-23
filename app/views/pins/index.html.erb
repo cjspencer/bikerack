@@ -13,16 +13,17 @@
             <div>
               <%= link_to 'Edit', edit_pin_path(pin) %> |
               <%= link_to 'Delete', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% pin.liked_riders.each do |rider| %>
-              <p><%= rider.ridername %></p>
-              <% end %>
             </div>
+
             <% end %>
             <% if rider_signed_in? && pin.rider != current_rider %>
             <div>
               <%= link_to 'Repost', repost_pin_path(pin), method: :post, data: { confirm: 'Are you sure?'} %>
               <%= link_to 'Like', like_pin_path(pin), method: :post, class: 'pull-right' %>
             </div>
+            <% end %>
+            <% pin.liked_riders.each do |rider| %>
+            <p><%= rider.ridername %></p>
             <% end %>
         </div>
       </div>
