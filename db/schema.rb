@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622222805) do
+ActiveRecord::Schema.define(version: 20160622235020) do
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "pin_id"
+    t.integer  "rider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pins", force: :cascade do |t|
     t.string   "description"

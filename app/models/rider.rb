@@ -4,7 +4,11 @@ class Rider < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :pins
+  has_many :pins, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_pins, through: :likes, source: :pin
+
+  
   validates_uniqueness_of :ridername
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }

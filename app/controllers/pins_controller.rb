@@ -1,7 +1,19 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [:show, :edit, :update, :destroy, :repost]
+  before_action :set_pin, only: [:show, :edit, :update, :destroy, :repost, :like]
   before_action :authenticate_rider!, except: [:index, :show]
   before_action :correct_rider, only: [:edit, :update, :destroy]
+
+  def like
+    @like = @pin.likes.build(rider_id: current_rider.id)
+    if @like.save
+      flash[:notice] = "You liked this pin!"
+      redirect_to pins_path
+    else
+      flash[:notice] = "You have already liked this pin!"
+      redirect_to pins_path
+    end
+  end
+
   # GET /pins
   # GET /pins.json
   def index
